@@ -1,0 +1,1 @@
+export {default as alarmSound} from '../assets/alarm.mp3'

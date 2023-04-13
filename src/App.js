@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+import { Children } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
-
+import Layout from './Layout';
+import AlarmClock from './pages/AlarmClock';
+import Home from './pages/Home';
+import StopWatch from './pages/StopWatch';
+import Timer from './pages/Timer';
+import WorldClock from './pages/WorldClock';
 function App() {
+  const router = createBrowserRouter([
+    {
+      path:'/',
+      element:<Layout />,
+      children:[
+        {
+          path:"/",
+          element:<Home />
+        },
+        {
+          path:"/alarm",
+          element:<AlarmClock />
+        },
+        {
+          path:"/stopwatch",
+          element:<StopWatch />
+        },
+        {
+          path:"/worldclock",
+          element:<WorldClock />
+        },
+        {
+          path:"/timer",
+          element:<Timer />
+        }
+        
+      ]
+    }
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='bg-primary-color min-h-screen'>
+      <RouterProvider router={router} />
     </div>
   );
 }
